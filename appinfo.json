@@ -1,0 +1,21 @@
+{
+  "uuid": "5f4711a6-0391-4c67-b4cf-ef7f8fa6366f",
+  "shortName": "pebble-ticker",
+  "longName": "pebble-ticker",
+  "companyName": "MakeAwesomeHappen",
+  "versionCode": 1,
+  "versionLabel": "1.0",
+  "sdkVersion": "3",
+  "targetPlatforms": ["aplite", "basalt"],
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "ticker": 0,
+    "field" : 1,
+    "value" : 2
+  },
+  "resources": {
+    "media": []
+  }
+}
