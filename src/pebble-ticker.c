@@ -7,13 +7,10 @@ static TextLayer *text_layer;
 char ticker[20];
 char field[20];
 int value;
+char displayText[50];
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
-  char disp_val[30];
-  snprintf(disp_val, 30, "Value received is %d", value);
-  APP_LOG(APP_LOG_LEVEL_DEBUG, "%s", disp_val);
-
-  text_layer_set_text(text_layer, (const char *) disp_val);
+  text_layer_set_text(text_layer, "Select");
 }
 
 static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
@@ -44,8 +41,14 @@ static void window_unload(Window *window) {
   text_layer_destroy(text_layer);
 }
 
+void new_value_handler(int passedVal){
+  snprintf(displayText, 50, "Value received is %d", passedVal);
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "%s", displayText);
+
+  text_layer_set_text(text_layer, (const char *) displayText);
+}
+
 static void init(void) {
-  value = 33;
   app_msg_init();
 
   window = window_create();

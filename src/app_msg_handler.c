@@ -2,7 +2,7 @@
 
 extern char ticker[20];
 extern char field[20];
-extern int value;
+extern void new_value_handler(int);
 
 enum {
   TICKER_KEY   = 0x0,
@@ -36,8 +36,10 @@ static void in_received_handler( DictionaryIterator * received,
   if (ticker_value_tuple != NULL) {
     APP_LOG(APP_LOG_LEVEL_DEBUG, "GOT A VALUE, length %d", ticker_value_tuple->length );
     APP_LOG(APP_LOG_LEVEL_DEBUG, "GOT A VALUE, val %d", *(ticker_value_tuple->value->data) );
-    value = *(ticker_value_tuple->value->data);
-    APP_LOG(APP_LOG_LEVEL_DEBUG, "Value is %d", value);
+    //value = *(ticker_value_tuple->value->data);
+
+    (*new_value_handler)((int)*(ticker_value_tuple->value->data));
+    APP_LOG(APP_LOG_LEVEL_DEBUG, "Value is %d", *(ticker_value_tuple->value->data));
   }
 
 }
